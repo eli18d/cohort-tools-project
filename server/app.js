@@ -67,7 +67,7 @@ app.post("/api/students", (req, res) => {
 });
 
 app.get("/api/students/cohort/:cohortId", (req, res) => {
-  Student.find(req.params.cohortId)
+  Student.find({ cohort: req.params.cohortId})
     .populate('cohort')
     .then(students => {
       res.status(200).json(students)
@@ -143,8 +143,8 @@ app.get("/api/cohorts/:cohortId", (req, res) => {
   Cohort.findById(cohortId)
   .then(cohort => {
     res.json(cohort)
-    .catch(err => res.status(400).json({error:"failed to find id", details: err}))
   })
+  .catch(err => res.status(400).json({error:"failed to find id", details: err}))
 })
 
 app.put("/api/cohorts/:cohortId", (req, res) => {

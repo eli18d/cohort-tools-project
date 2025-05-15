@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema ({
   email: String,
   phone: String,
   linkedinUrl: String,
-  languages: String,
+  languages: [String],
   program: String,
   background: String,
   image: String,

@@ -57,6 +57,7 @@ function StudentDetailsPage() {
                 <strong>LinkedIn:</strong> {student.linkedinUrl}
               </p>
               <p className="text-left mb-2 border-b pb-2">
+                {console.log(student)}
                 <strong>Languages:</strong> {student.languages.join(", ")}
               </p>
               <p className="text-left mb-2 border-b pb-2">

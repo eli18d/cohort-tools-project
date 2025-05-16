@@ -46,6 +46,7 @@ app.get("/docs", (req, res) => {
 app.use("/", require("./routes/students.routes"))
 app.use("/", require("./routes/cohorts.routes"))
 app.use("/", require("./routes/auth.routes"))
+app.use("/", require("./routes/user.routes"))
 
 
 

@@ -1,5 +1,7 @@
   const router = require("express").Router();
 
+  const { isAuthenticated } = require("../middleware/jwt.middleware");
+
   const Cohort = require("../models/cohort");
   
   router.get("/api/cohorts", (req, res) => {
@@ -13,7 +15,7 @@
     });
   });
 
-  router.post("/api/cohorts", (req,res) => {
+  router.post("/api/cohorts", isAuthenticated, (req,res) => {
   const cohortData = req.body
 
   Cohort.create(cohortData)
@@ -31,7 +33,7 @@ router.get("/api/cohorts/:cohortId", (req, res) => {
   .catch(err => res.status(400).json({error:"failed to find id", details: err}))
 })
 
-router.put("/api/cohorts/:cohortId", (req, res) => {
+router.put("/api/cohorts/:cohortId", isAuthenticated, (req, res) => {
   const { cohortId } = req.params;
   const updateData = req.body;
 
@@ -42,7 +44,7 @@ router.put("/api/cohorts/:cohortId", (req, res) => {
     .catch(err => res.status(400).json({ error: "Failed to update cohort", details: err }));
 });
 
-router.delete("/api/cohorts/:cohortId", (req, res) => {
+router.delete("/api/cohorts/:cohortId", isAuthenticated, (req, res) => {
   const { cohortId } = req.params;
 
   Cohort.findByIdAndDelete(cohortId)

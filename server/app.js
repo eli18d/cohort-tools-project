@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
@@ -44,6 +45,7 @@ app.get("/docs", (req, res) => {
 
 app.use("/", require("./routes/students.routes"))
 app.use("/", require("./routes/cohorts.routes"))
+app.use("/", require("./routes/auth.routes"))
 
 
 
